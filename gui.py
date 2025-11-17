@@ -223,9 +223,9 @@ class MainWindow(ctk.CTk):
                 corner_radius=10,
                 fg_color="transparent",
                 text_color="white",
-                hover_color=("rgba(255,255,255,0.2)", "rgba(255,255,255,0.1)"),
+                hover_color=("#8a9df0", "#9068c7"),
                 border_width=2,
-                border_color="rgba(255,255,255,0.3)",
+                border_color="#b8c5f7",
                 anchor="center",
                 command=lambda mid=module_id: self.show_module(mid)
             )
