@@ -5,6 +5,7 @@ A modern Python GUI application for managing multi-purpose businesses including 
 ## Features
 
 - **Modern Glassmorphism Design**: Beautiful gradient-based UI with semi-transparent glass-like effects
+- **CustomTkinter**: Built with CustomTkinter for a modern, cross-platform GUI (pure Python, no C++ build tools required)
 - **RTL Support**: Full right-to-left layout support for Persian language
 - **Vazir Font**: Uses Vazir font for proper Persian text rendering
 - **Secure Login System**: Username and password-based authentication
@@ -25,7 +26,9 @@ A modern Python GUI application for managing multi-purpose businesses including 
 ## Requirements
 
 - Python 3.12+
-- PyQt5 5.15.10
+- CustomTkinter 5.2.1
+- Pillow 10.1.0
+- tkinter (system package)
 
 ## Installation
 
@@ -35,7 +38,22 @@ git clone https://github.com/mhmdhosn82/main_kagan_finaly.git
 cd main_kagan_finaly
 ```
 
-2. Install dependencies:
+2. Install system dependencies (tkinter):
+```bash
+# On Ubuntu/Debian
+sudo apt-get install python3-tk
+
+# On Fedora
+sudo dnf install python3-tkinter
+
+# On macOS (usually included with Python)
+# No action needed
+
+# On Windows (usually included with Python installer)
+# Make sure to check "tcl/tk and IDLE" during Python installation
+```
+
+3. Install Python dependencies:
 ```bash
 pip install -r requirements.txt
 ```
@@ -81,9 +99,9 @@ main_kagan_finaly/
 ### Module Structure
 
 Each module follows the same pattern:
-- Inherits from `QWidget`
+- Inherits from `ctk.CTkFrame`
 - Implements `setup_ui()` for UI layout
-- Implements `apply_styles()` for styling
+- Uses CustomTkinter components
 - Contains placeholder content for future implementation
 
 ### Adding New Features
@@ -92,6 +110,29 @@ Each module follows the same pattern:
 2. Database integration can be added to the modules
 3. Reports module supports filters for financial and managerial reporting
 4. SMS module uses `sms_service.py` for actual SMS operations
+
+### Testing
+
+Run the test suite to verify all components:
+
+```bash
+python test_app.py
+```
+
+## Technology Stack
+
+- **GUI Framework**: CustomTkinter (pure Python, no C++ build tools required)
+- **Base Library**: tkinter (Python's standard GUI library)
+- **Image Processing**: Pillow
+- **Language**: Python 3.12+
+
+## Design Philosophy
+
+- **Pure Python**: No dependencies requiring C++ build tools (unlike PyQt5)
+- **Cross-Platform**: Runs on Windows, macOS, and Linux
+- **RTL Support**: Optimized for Persian language with right-to-left layout
+- **Modern UI**: Glassmorphism design with smooth gradients and transparency
+- **Modular**: Clean separation of concerns with independent modules
 
 ## License
 
