@@ -195,7 +195,7 @@ main_kagan_finaly/
 
 **Dependencies:**
 - customtkinter==5.2.1 (pure Python GUI framework)
-- pillow==10.1.0 (image processing, pure Python)
+- pillow==10.3.0 (image processing, pure Python, security-patched version)
 - tkinter (Python standard library, system package)
 
 ### 🚀 Next Steps (Future Enhancements)

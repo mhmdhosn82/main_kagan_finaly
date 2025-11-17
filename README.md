@@ -27,7 +27,7 @@ A modern Python GUI application for managing multi-purpose businesses including 
 
 - Python 3.12+
 - CustomTkinter 5.2.1
-- Pillow 10.1.0
+- Pillow 10.3.0
 - tkinter (system package)
 
 ## Installation
