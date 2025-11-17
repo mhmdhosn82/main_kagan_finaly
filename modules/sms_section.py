@@ -11,8 +11,9 @@ import customtkinter as ctk
 class SmsSection(ctk.CTkFrame):
     """SMS management section"""
     
-    def __init__(self, parent):
+    def __init__(self, parent, current_user):
         super().__init__(parent, corner_radius=15, fg_color="white")
+        self.current_user = current_user
         self.setup_ui()
     
     def setup_ui(self):

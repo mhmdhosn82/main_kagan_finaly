@@ -30,6 +30,7 @@ class LoginDialog(ctk.CTk):
         super().__init__()
         
         self.login_successful = False
+        self.current_user = None
         
         # Configure window
         self.title("ورود به سیستم - Kagan")
@@ -136,23 +137,39 @@ class LoginDialog(ctk.CTk):
         username = self.username_entry.get()
         password = self.password_entry.get()
         
-        # Simple authentication (in production, use proper authentication)
-        if username and password:
-            # For demo: accept any non-empty credentials
-            self.login_successful = True
-            self.destroy()
-        else:
+        # Validate inputs
+        if not username or not password:
             messagebox.showerror(
                 "خطا",
                 "لطفا نام کاربری و رمز عبور را وارد کنید"
+            )
+            return
+        
+        try:
+            # Import authentication service
+            from auth import AuthService
+            
+            # Authenticate user
+            user = AuthService.authenticate(username, password)
+            self.current_user = user
+            self.login_successful = True
+            self.destroy()
+            
+        except Exception as e:
+            messagebox.showerror(
+                "خطا در ورود",
+                str(e)
             )
 
 
 class MainWindow(ctk.CTk):
     """Main application window with sidebar navigation"""
     
-    def __init__(self):
+    def __init__(self, current_user):
         super().__init__()
+        
+        # Store current user
+        self.current_user = current_user
         
         # Configure window
         self.title("سیستم مدیریت کاگان - Kagan Business Manager")
@@ -233,7 +250,7 @@ class MainWindow(ctk.CTk):
             row += 1
             
             # Initialize module (create instance but don't add to grid yet)
-            self.modules[module_id] = module_class(self)
+            self.modules[module_id] = module_class(self, self.current_user)
         
         # Create content frame
         self.content_frame = ctk.CTkFrame(self, corner_radius=0)
